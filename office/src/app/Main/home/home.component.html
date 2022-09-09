@@ -1,0 +1,119 @@
+<div class="row">
+    <!-- <div class="col-md-3 offset-2 card " style="margin-top:100px;padding:20px;background-color: rgb(0 0 0 / 8%);">
+            <h4 class="card-header">Create new Employe</h4>
+            <br>
+
+
+
+    </div> -->
+    <div class="col-md-6 offset-3" style="margin-top:10px;">
+
+        <div class="card">
+            <div class="card-header">
+                Student Profile
+            </div>
+
+
+
+            <div class="card-body">
+                <form class="form-group" [formGroup]="profile" (ngSubmit)="saveChanges()">
+
+
+
+                    <input id="1" class="form-control" type="text" placeholder="Enter your name" formControlName="name">
+                    <br>
+
+                    <input id="2" class="form-control" type="number" placeholder="Enter your age" formControlName="age">
+                    <br>
+
+                    <input id="3" class="form-control" type="email" placeholder="Enter your email"
+                        formControlName="email">
+
+
+                    <br>
+                    <button class="btn btn-secondary" type="submit">Submit Now</button>
+
+                </form>
+            </div>
+
+        </div>
+
+    </div>
+
+
+
+    
+</div>
+<div  style="margin-top:30px;">
+
+
+    <div class="card " style="align-items: center;">
+        <div class="card-header">
+            Employe List
+        </div>
+
+
+
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col ">Id</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Email</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let o of obj">
+                        <td>{{o.id}}</td>
+                        <td>{{o.name}}</td>
+                        <td>{{o.age}}</td>
+                        <td>{{o.email}}</td>
+                        <button class="btn btn-success" style="color:black"(click)="open(content,o)">Edit</button>
+                        <button class="btn btn-danger " style="color:black"(click)="delData(o.id)">Delete</button>
+                        
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+<ng-template #content let-modal>
+    <div class="modal-header">
+        <h4 class="modal-title" id="modal-basic-title">Student Profile</h4>
+        <button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+    </div>
+    <div class="modal-body">
+
+        <div class="mb-3">
+            <form class="form-group" [formGroup]="editForm" (ngSubmit)="Update()">
+
+                <input id="1" class="form-control" readonly type="text" placeholder="Enter your name" formControlName="id">
+                <br>
+                <input id="1" class="form-control" type="text" placeholder="Enter your name" formControlName="name">
+                <br>
+
+                <input id="2" class="form-control" type="number" placeholder="Enter your age" formControlName="age">
+                <br>
+
+                <input id="3" class="form-control" type="email" placeholder="Enter your email" formControlName="email">
+
+
+                <br>
+                <button class="btn btn-secondary" type="submit">Update</button>
+
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+    </div>
+</ng-template>
+
+<pre>{{ closeResult }}</pre>
